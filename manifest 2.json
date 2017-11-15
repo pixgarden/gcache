@@ -1,0 +1,24 @@
+{
+  "manifest_version": 2,
+
+  "name": "test",
+  "description": "test",
+  "version": "1.0",
+
+  "browser_action": {
+    "default_icon": "icon.png",
+    "default_popup": "popup.html"
+  },
+  "content_scripts": [
+    {
+      "matches": ["http://*/*"],
+      "js": ["content_scripts.js"],
+      "js": ["popup.js"]
+    }
+  ],
+  "background": {
+    "scripts": ["background.js"],
+    "persistent": true
+  }
+}
+
