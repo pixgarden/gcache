@@ -42,6 +42,37 @@ var init = true;
 
 function updateIcon() {
 
+/*
+chrome.tabs.getSelected(null, function(tab) {
+        alert(tab);
+        alert(tab.id);
+        alert(tab.url);
+
+    });
+*/
+
+chrome.tabs.query({
+            'active': true,
+            'windowId': chrome.windows.WINDOW_ID_CURRENT
+        }, function (tabs) {
+
+        	/*alert(tabs[0].url);*/
+
+        	if(/^http(.*)$/.test(tabs[0].url)) {
+
+        	chrome.tabs.update(tabs[0].id, {url: 'http://webcache.googleusercontent.com/search?source=hp&q=cache:' + tabs[0].url});
+
+         /*   chrome.tabs.create({
+                url: 'http://webcache.googleusercontent.com/search?source=hp&q=cache:' + tabs[0].url;
+            });*/
+
+            }
+        });
+
+
+
+
+
 	if(init){
 		chrome.browserAction.setIcon({path:"icon1.png"});
 	}else{
@@ -51,4 +82,5 @@ function updateIcon() {
 }
 
 chrome.browserAction.onClicked.addListener(updateIcon);
+//chrome.browserAction.onClicked.addListener(function(tab) { });
 updateIcon();

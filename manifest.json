@@ -1,21 +1,27 @@
 {
-"name" :"GCA",
-"version" :"1.0",
-"description" :"test de cache",
-"manifest_version": 2,
-"background": { "scripts": ["background.js"] },
-"content_scripts": [
+  "manifest_version": 2,
+
+  "name": "gcache",
+  "description": "Show Google webpage cache",
+  "version": "0.1",
+
+  "browser_action": {
+    "default_icon": "icon.png"
+   // "default_popup": "popup.html"
+  },
+  "content_scripts": [
     {
-		"matches": ["<all_urls>"],
-		"js": ["cache.js"],
-		"default_icon" : "off.png",
-		"run_at" : "document_end"
+      "matches": ["http://*/*"],
+      "js": ["cache.js"]
+     // "js": ["popup.js"]
     }
   ],
-"browser_action" :
-	{
-		"default_icon" : "off.png",
-		"name": "Click to toggle offline mode"
-	}
-
+  "background": {
+    "scripts": ["background.js"],
+    "persistent": true
+  },
+  "permissions": [
+          "tabs"
+        ]
 }
+
