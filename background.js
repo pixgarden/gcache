@@ -1,6 +1,5 @@
 
 
-var init = true;
 
 function updateIcon() {
 
@@ -20,17 +19,6 @@ chrome.tabs.query({
             }
         });
 
-
-
-
-
-	if(init){
-		chrome.browserAction.setIcon({path:"icon1.png"});
-	}else{
-		chrome.browserAction.setIcon({path:"icon2.png"});
-	}
-	init = !init;
 }
 
 chrome.browserAction.onClicked.addListener(updateIcon);
-updateIcon();
