@@ -12,7 +12,7 @@ chrome.tabs.query({
         	
         	if(/^http(.*)$/.test(tabs[0].url)) {
 
-        	chrome.tabs.update(tabs[0].id, {url: 'http://webcache.googleusercontent.com/search?source=hp&q=cache:' + tabs[0].url});
+        	chrome.tabs.update(tabs[0].id, {url: 'http://webcache.googleusercontent.com/search?hl=en&source=hp&q=cache:' + tabs[0].url});
 
          
 
